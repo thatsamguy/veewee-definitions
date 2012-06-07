@@ -6,6 +6,7 @@ yum -y install gcc bzip2 make kernel-devel-`uname -r`
 yum -y update
 
 rpm -ivh http://yum.puppetlabs.com/el/5/products/x86_64/puppetlabs-release-5-1.noarch.rpm
+rpm -ivh http://linux.dell.com/dkms/permalink/dkms-2.2.0.3-1.noarch.rpm
 
 yum -y update
 yum -y upgrade
@@ -37,8 +38,6 @@ chmod 700 /home/vagrant/.ssh
 cd /home/vagrant/.ssh
 wget --no-check-certificate 'https://raw.github.com/mitchellh/vagrant/master/keys/vagrant.pub' -O authorized_keys
 chown -R vagrant /home/vagrant/.ssh
-
-mkdir -p /vagrant
 
 # Installing the virtualbox guest additions
 VBOX_VERSION=$(cat /home/vagrant/.vbox_version)
