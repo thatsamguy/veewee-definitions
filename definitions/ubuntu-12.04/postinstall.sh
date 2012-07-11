@@ -2,6 +2,12 @@
 
 date > /etc/vagrant_box_build_time
 
+# Download and Install PuppetLabs Offical Repository
+cd /tmp
+wget http://apt.puppetlabs.com/puppetlabs-release-precise.deb
+dpkg -i puppetlabs-release-precise.deb
+rm -f puppetlabs-release-precise.deb
+
 # Apt-install various things necessary for Ruby, guest additions,
 # etc., and remove optional things to trim down the machine.
 apt-get -y update
@@ -20,7 +26,7 @@ mount -o loop VBoxGuestAdditions_$VBOX_VERSION.iso /mnt
 sh /mnt/VBoxLinuxAdditions.run
 umount /mnt
 
-rm VBoxGuestAdditions_$VBOX_VERSION.iso
+rm -f VBoxGuestAdditions_$VBOX_VERSION.iso
 
 # Setup sudo to allow no-password sudo for "admin"
 groupadd -r admin
@@ -35,9 +41,11 @@ apt-get -y install nfs-common
 # Install Ruby from packages
 apt-get -y install ruby rubygems
 
-# Installing chef & Puppet
+# Installing puppet from packages
+apt-get -y install puppet facter
+
+# Installing chef
 gem install chef --no-ri --no-rdoc
-gem install puppet --no-ri --no-rdoc
 
 # Installing vagrant keys
 mkdir /home/vagrant/.ssh
