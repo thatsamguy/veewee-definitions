@@ -1,8 +1,4 @@
 #!/bin/bash
-wget -q http://apt.puppetlabs.com/puppetlabs-release_1.0-3_all.deb
-dpkg -i puppetlabs-release_1.0-3_all.deb
-apt-get update
-apt-get -y install puppet
 echo "192.168.1.10 puppet puppet.local" >> /etc/hosts
 echo "[agent]
 report = true
