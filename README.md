@@ -52,5 +52,7 @@ Various new and modified template definitions to create [veewee](https://github.
 - Distro Ruby packages
 - Puppet install with official Puppetlabs repo
 
-##### Known Issues #####
+### Known Issues ###
+
+#### definitions/ubuntu-12.04 ####
 - (Base Box Creation Only) Sometimes will not shutdown correctly for restart before postinstall due to e1000 issue. Works fine after manual reboot.
