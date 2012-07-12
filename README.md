@@ -4,7 +4,7 @@ Various new and modified template definitions to create [veewee](https://github.
 
 ## Definitions ##
 
-### General Changes ###
+### General Configuration ###
 - Most definitions based off originals from [veewee](https://github.com/jedi4ever/veewee)
 - All definitions are 64 bit 
 - Australianisation of environment and mirrors
@@ -13,6 +13,7 @@ Various new and modified template definitions to create [veewee](https://github.
 - Use add and install puppet using offical vendor [puppetlabs](http://docs.puppetlabs.com/guides/puppetlabs_package_repositories.html) repositories where possible
 - Clean up installations more, move most package installation to postinstall instead of kickstart
 - Install VirtualBox Guests Additions based on current VirtualBox version
+- Gem based chef install
 
 ### Definition List ###
 
