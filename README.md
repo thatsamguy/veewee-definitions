@@ -21,11 +21,6 @@ Various new and modified template definitions to create [veewee](https://github.
 - Distro Ruby packages
 - Puppet install with official Puppetlabs repo
 
-#### definitions/centos-6.2 ####
-- Uses netinstall iso for install
-- Distro Ruby packages
-- Puppet install with official Puppetlabs repo
-
 #### definitions/centos-6.3 ####
 - Uses netinstall iso for install
 - Distro Ruby packages
