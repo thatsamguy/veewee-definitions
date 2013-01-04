@@ -1,33 +1,18 @@
-#http://chrisadams.me.uk/2010/05/10/setting-up-a-centos-base-box-for-development-and-testing-with-vagrant/
-
 date > /etc/vagrant_box_build_time
 
 yum -y install gcc bzip2 make kernel-devel-`uname -r`
 yum -y update
 
-rpm -ivh http://yum.puppetlabs.com/el/5/products/x86_64/puppetlabs-release-5-5.noarch.rpm
+rpm -ivh http://yum.puppetlabs.com/el/5/products/x86_64/puppetlabs-release-5-6.noarch.rpm
 rpm -ivh http://linux.dell.com/dkms/permalink/dkms-2.2.0.3-1.noarch.rpm
 
 yum -y update
 yum -y upgrade
 
 yum -y install gcc-c++ zlib-devel openssl-devel readline-devel sqlite3-devel
-yum -y install puppet facter
-yum -y erase wireless-tools gtk2 libX11 hicolor-icon-theme avahi freetype bitstream-vera-fonts
+yum -y install puppet facter ruby-devel rubygems
+yum -y erase wireless-tools gtk2 hicolor-icon-theme avahi freetype bitstream-vera-fonts
 yum -y clean all
-
-# Installing ruby
-cd /tmp
-wget http://ftp.ruby-lang.org/pub/ruby/1.9/ruby-1.9.2-p180.tar.gz || fail "Could not download Ruby source"
-tar xzvf ruby-1.9.2-p180.tar.gz 
-cd ruby-1.9.2-p180
-./configure
-make && make install
-cd /tmp
-rm -rf /tmp/ruby-1.9.2-p180
-rm /tmp/ruby-1.9.2-p180.tar.gz
-ln -s /usr/local/bin/ruby /usr/bin/ruby # Create a sym link for the same path
-ln -s /usr/local/bin/gem /usr/bin/gem # Create a sym link for the same path
 
 # Installing chef
 /usr/bin/gem install chef --no-ri --no-rdoc
@@ -51,6 +36,8 @@ rm VBoxGuestAdditions_$VBOX_VERSION.iso
 sed -i "s/^.*requiretty/#Defaults requiretty/" /etc/sudoers
 sed -i "s/^\(.*env_keep = \"\)/\1PATH /" /etc/sudoers
 
-dd if=/dev/zero of=/tmp/clean || rm /tmp/clean
+# Zero out the free space to save space in the final image:
+dd if=/dev/zero of=/EMPTY bs=1M
+rm -f /EMPTY
 
 exit
