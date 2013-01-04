@@ -4,8 +4,8 @@ Veewee::Session.declare({
   :disk_size => '10140',
   :disk_format => 'VDI',
   :hostiocache => 'off',
-  :ioapic => 'on',
-  :pae => 'on',
+  :virtualbox => { :vm_options => ["ioapic" => "on"]}
+  :virtualbox => { :vm_options => ["pae" => "on"]}
   :os_type_id => 'RedHat_64',
   :iso_file => "CentOS-6.3-x86_64-netinstall.iso",
   :iso_src => "http://mirror.aarnet.edu.au/pub/centos/6.3/isos/x86_64/CentOS-6.3-x86_64-netinstall.iso",
