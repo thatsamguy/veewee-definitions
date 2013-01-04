@@ -3,7 +3,7 @@ date > /etc/vagrant_box_build_time
 yum -y install gcc bzip2 make kernel-devel-`uname -r`
 yum -y update
 
-rpm -ivh http://yum.puppetlabs.com/el/6/products/x86_64/puppetlabs-release-6-5.noarch.rpm
+rpm -ivh http://yum.puppetlabs.com/el/6/products/x86_64/puppetlabs-release-6-6.noarch.rpm
 rpm -ivh http://linux.dell.com/dkms/permalink/dkms-2.2.0.3-1.noarch.rpm
 
 yum -y update
@@ -11,7 +11,7 @@ yum -y upgrade
 
 yum -y install gcc-c++ zlib-devel openssl-devel readline-devel sqlite-devel
 yum -y install puppet facter ruby-devel rubygems
-yum -y erase  gtk2 libX11 hicolor-icon-theme avahi freetype bitstream-vera-fonts
+yum -y erase  gtk2 hicolor-icon-theme avahi freetype bitstream-vera-fonts
 yum -y clean all
 
 # Installing chef
@@ -35,6 +35,8 @@ rm VBoxGuestAdditions_$VBOX_VERSION.iso
 
 sed -i "s/^.*requiretty/#Defaults requiretty/" /etc/sudoers
 
-dd if=/dev/zero of=/tmp/clean || rm /tmp/clean
+# Zero out the free space to save space in the final image:
+dd if=/dev/zero of=/EMPTY bs=1M
+rm -f /EMPTY
 
 exit
