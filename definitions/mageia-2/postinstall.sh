@@ -8,7 +8,7 @@ urpmi.removemedia -aq
 #urpmi.addmedia --distrib --mirrorlist '$MIRRORLIST'
 urpmi.addmedia -q --distrib http://mirror.internode.on.net/pub/mageia/distrib/2/x86_64
 
-urpme --auto -q kernel-server-latest
+urpme --auto -qa kernel-server-latest kernel-desktop
 
 urpmi.update -aq
 urpmi --auto --auto-select -q
