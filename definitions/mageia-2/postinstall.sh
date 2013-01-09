@@ -4,6 +4,7 @@ date > /etc/vagrant_box_build_time
 echo "/^kernel-desktop/" >> /etc/urpmi/skip.list
 echo "/^kernel-server/" >> /etc/urpmi/skip.list
 
+urpmi.removemedia -aq
 #urpmi.addmedia --distrib --mirrorlist '$MIRRORLIST'
 urpmi.addmedia -q --distrib http://mirror.internode.on.net/pub/mageia/distrib/2/x86_64
 
