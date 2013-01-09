@@ -17,14 +17,14 @@ Various new and modified template definitions to create [veewee](https://github.
 
 ### Definition List ###
 
-#### definitions/centos-5.8 ####
+#### definitions/centos-5 ####
 - Uses full iso DVD 1 of 2 for install
-- Distro Ruby packages
+- Puppetlabs supplied Ruby packages
 - Puppet install with official Puppetlabs repo
 
-#### definitions/centos-6.3 ####
+#### definitions/centos-6 ####
 - Uses netinstall iso for install
-- Distro Ruby packages
+- Puppetlabs supplied Ruby packages
 - Puppet install with official Puppetlabs repo
 
 #### definitions/ubuntu-10.04 ####
