@@ -8,3 +8,4 @@
 
 ## Before sending for global use
 - Remove australianisation
+- Remove sam-ification (:boot_cmd_sequence)
