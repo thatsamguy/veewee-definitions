@@ -4,6 +4,7 @@
 - Find a way to install a newer version of puppet
 - Find a way to install an updated kernel and not break VBox Guest Additions
 - Reduce bootloader timeout
+- Fix VBox label from 'RedHat_64' to something more appropriate
 
 ## Before sending for global use
 - Remove australianisation
