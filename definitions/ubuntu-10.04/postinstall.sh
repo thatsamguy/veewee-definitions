@@ -2,25 +2,30 @@
 
 date > /etc/vagrant_box_build_time
 
-# Installing the virtualbox guest additions
-apt-get -y install dkms
-VBOX_VERSION=$(cat /home/vagrant/.vbox_version)
-cd /tmp
-wget http://download.virtualbox.org/virtualbox/$VBOX_VERSION/VBoxGuestAdditions_$VBOX_VERSION.iso
-mount -o loop VBoxGuestAdditions_$VBOX_VERSION.iso /mnt
-sh /mnt/VBoxLinuxAdditions.run
-umount /mnt
-
-rm VBoxGuestAdditions_$VBOX_VERSION.iso
-
 # Apt-install various things necessary for Ruby, guest additions,
 # etc., and remove optional things to trim down the machine.
 apt-get -y update
 apt-get -y upgrade
 apt-get -y install linux-headers-$(uname -r) build-essential
 apt-get -y install zlib1g-dev libssl-dev libreadline5-dev
-apt-get -y install vim
+apt-get -y install vim dkms
 apt-get clean
+
+# Installing the virtualbox guest additions
+VBOX_VERSION=$(cat /home/vagrant/.vbox_version)
+cd /tmp
+if [ -f /home/vagrant/VBoxGuestAdditions_$VBOX_VERSION.iso ];
+then
+  vboxiso="/home/vagrant/VBoxGuestAdditions_$VBOX_VERSION.iso"
+else
+  wget http://download.virtualbox.org/virtualbox/$VBOX_VERSION/VBoxGuestAdditions_$VBOX_VERSION.iso
+  vboxiso="/tmp/VBoxGuestAdditions_$VBOX_VERSION.iso"
+fi
+mount -o loop $vboxiso /mnt
+sh /mnt/VBoxLinuxAdditions.run
+umount /mnt
+rm -f $vboxiso;
+rm VBoxGuestAdditions_$VBOX_VERSION.iso
 
 # Setup sudo to allow no-password sudo for "admin"
 cp /etc/sudoers /etc/sudoers.orig

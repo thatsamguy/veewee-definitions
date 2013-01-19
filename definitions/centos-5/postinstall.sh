@@ -27,12 +27,17 @@ chown -R vagrant /home/vagrant/.ssh
 # Installing the virtualbox guest additions
 VBOX_VERSION=$(cat /home/vagrant/.vbox_version)
 cd /tmp
-wget http://download.virtualbox.org/virtualbox/$VBOX_VERSION/VBoxGuestAdditions_$VBOX_VERSION.iso
-mount -o loop VBoxGuestAdditions_$VBOX_VERSION.iso /mnt
+if [ -f /home/vagrant/VBoxGuestAdditions_$VBOX_VERSION.iso ];
+then
+  vboxiso="/home/vagrant/VBoxGuestAdditions_$VBOX_VERSION.iso"
+else
+  wget http://download.virtualbox.org/virtualbox/$VBOX_VERSION/VBoxGuestAdditions_$VBOX_VERSION.iso
+  vboxiso="/tmp/VBoxGuestAdditions_$VBOX_VERSION.iso"
+fi
+mount -o loop $vboxiso /mnt
 sh /mnt/VBoxLinuxAdditions.run
 umount /mnt
-rm -f VBoxGuestAdditions_$VBOX_VERSION.iso
-rm -f /home/vagrant/VBoxGuestAdditions_*.iso
+rm -f $vboxiso;
 
 sed -i "s/^.*requiretty/#Defaults requiretty/" /etc/sudoers
 sed -i "s/^\(.*env_keep = \"\)/\1PATH /" /etc/sudoers
