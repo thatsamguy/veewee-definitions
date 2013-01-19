@@ -17,6 +17,11 @@ Various new and modified template definitions to create [veewee](https://github.
 
 ### Definition List ###
 
+#### definitions/mageia-2 ####
+- Uses boot-nonfree iso for network based install
+- Distro Ruby packages
+- Uses gem for puppet install
+
 #### definitions/centos-5 ####
 - Uses full iso DVD 1 of 2 for install
 - Puppetlabs supplied Ruby packages
@@ -32,23 +37,7 @@ Various new and modified template definitions to create [veewee](https://github.
 - Not using distro Ruby
 - Uses gem for puppet install
 
-#### definitions/ubuntu-10.10 ####
-- Not using distro Ruby 
-- Uses gem for puppet install
-
-#### definitions/ubuntu-11.04 ####
-- Not using distro Ruby
-- Uses gem for puppet install
-
-#### definitions/ubuntu-11.10 ####
-- Not using distro Ruby
-- Uses gem for puppet install
-
 #### definitions/ubuntu-12.04 ####
+- Uses Ubuntu Server 12.04.1
 - Distro Ruby packages
 - Puppet install with official Puppetlabs repo
-
-### Known Issues ###
-
-#### definitions/ubuntu-12.04 ####
-- (Base Box Creation Only) Sometimes will not shutdown correctly for restart before postinstall due to e1000 issue. Works fine after manual reboot.
