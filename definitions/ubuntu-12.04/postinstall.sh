@@ -51,7 +51,7 @@ apt-get -y install ruby rubygems
 apt-get -y install puppet facter
 
 # Installing chef
-gem install chef --no-ri --no-rdoc
+#gem install chef --no-ri --no-rdoc
 
 # Installing vagrant keys
 mkdir /home/vagrant/.ssh

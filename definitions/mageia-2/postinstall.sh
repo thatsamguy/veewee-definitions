@@ -31,7 +31,7 @@ urpmi -q --clean
 gem install --no-ri --no-rdoc puppet
 
 # Installing chef
-gem install --no-ri --no-rdoc chef
+#gem install --no-ri --no-rdoc chef
 
 # Installing vagrant keys
 mkdir /home/vagrant/.ssh

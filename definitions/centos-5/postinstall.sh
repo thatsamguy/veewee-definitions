@@ -15,7 +15,7 @@ yum -y erase wireless-tools gtk2 hicolor-icon-theme avahi freetype bitstream-ver
 yum -y clean all
 
 # Installing chef
-/usr/bin/gem install chef --no-ri --no-rdoc
+#/usr/bin/gem install chef --no-ri --no-rdoc
 
 # Installing vagrant keys
 mkdir /home/vagrant/.ssh

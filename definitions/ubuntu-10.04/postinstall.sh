@@ -57,7 +57,7 @@ cd ..
 rm -rf rubygems-1.8.17*
 
 # Installing chef & Puppet
-/opt/ruby/bin/gem install chef --no-ri --no-rdoc
+#/opt/ruby/bin/gem install chef --no-ri --no-rdoc
 /opt/ruby/bin/gem install puppet --no-ri --no-rdoc
 
 # Add /opt/ruby/bin to the global path as the last resort so
