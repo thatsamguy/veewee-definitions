@@ -3,7 +3,7 @@ date > /etc/vagrant_box_build_time
 yum -y install gcc bzip2 make kernel-devel-`uname -r`
 yum -y update
 
-rpm -ivh http://yum.puppetlabs.com/el/6/products/x86_64/puppetlabs-release-6-6.noarch.rpm
+rpm -ivh http://yum.puppetlabs.com/el/6/products/x86_64/puppetlabs-release-6-7.noarch.rpm
 rpm -ivh http://linux.dell.com/dkms/permalink/dkms-2.2.0.3-1.noarch.rpm
 
 yum -y update
